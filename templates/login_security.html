@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/login_security.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<!-- TopNavBar -->
+<body class="bg-background font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+
+
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto md:flex">
+<!-- SideNavBar -->
+<aside class="h-full w-64 hidden md:block border-r border-outline-variant flex flex-col gap-stack-sm p-base bg-surface-container-low">
+<div class="px-4 py-6 mb-4">
+<h2 class="text-headline-md font-headline-md text-primary">Account Settings</h2>
+<p class="text-label-sm text-on-surface-variant">Manage your preferences</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">package_2</span>
+                    Your Orders
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-primary font-bold bg-primary-container/10 border-r-4 border-primary" href="#">
+<span class="material-symbols-outlined">security</span>
+                    Login &amp; Security
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">location_on</span>
+                    Your Addresses
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Your Payments
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-all translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+                    Your Profile
+                </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-grow px-margin-mobile md:px-gutter py-stack-lg">
+<nav aria-label="Breadcrumb" class="flex items-center text-label-sm text-on-surface-variant mb-stack-md">
+<span class="">Your Account</span>
+<span class="material-symbols-outlined text-[16px] mx-2">chevron_right</span>
+<span class="text-primary font-medium">Login &amp; Security</span>
+</nav>
+<header class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Login &amp; Security</h1>
+<p class="text-body-md text-on-surface-variant">Keep your account secure by managing your personal details and authentication methods.</p>
+</header>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 gap-gutter max-w-4xl">
+<!-- Security Item: Name -->
+<div class="group bg-surface-container-lowest border border-outline-variant p-gutter rounded-lg flex justify-between items-center security-card-hover transition-all duration-300">
+<div class="space-y-1">
+<label class="text-label-md font-bold text-on-surface">Name</label>
+<p class="text-body-md text-on-surface-variant">{{user.first_name}}</p>
+</div>
+<button class="px-6 py-2 border border-outline text-primary font-label-md rounded-lg hover:bg-primary/5 transition-colors focus:ring-2 focus:ring-primary/20">Edit</button>
+</div>
+<!-- Security Item: Email -->
+<div class="group bg-surface-container-lowest border border-outline-variant p-gutter rounded-lg flex justify-between items-center security-card-hover transition-all duration-300">
+<div class="space-y-1">
+<label class="text-label-md font-bold text-on-surface">Email</label>
+<p class="text-body-md text-on-surface-variant">{{user.email}}</p>
+</div>
+<button class="px-6 py-2 border border-outline text-primary font-label-md rounded-lg hover:bg-primary/5 transition-colors focus:ring-2 focus:ring-primary/20">Edit</button>
+</div>
+<!-- Security Item: Mobile Number -->
+<div class="group bg-surface-container-lowest border border-outline-variant p-gutter rounded-lg flex justify-between items-center security-card-hover transition-all duration-300">
+<div class="space-y-1">
+<label class="text-label-md font-bold text-on-surface">Mobile Phone Number</label>
+<p class="text-body-md text-on-surface-variant">Not added</p>
+</div>
+<button class="px-6 py-2 border border-outline text-primary font-label-md rounded-lg hover:bg-primary/5 transition-colors focus:ring-2 focus:ring-primary/20">Edit</button>
+</div>
+<!-- Security Item: Password -->
+<div class="group bg-surface-container-lowest border border-outline-variant p-gutter rounded-lg flex justify-between items-center security-card-hover transition-all duration-300">
+<div class="space-y-1">
+<label class="text-label-md font-bold text-on-surface">Password</label>
+<p class="text-body-md text-on-surface-variant">••••••••••••</p>
+</div>
+<button class="px-6 py-2 border border-outline text-primary font-label-md rounded-lg hover:bg-primary/5 transition-colors focus:ring-2 focus:ring-primary/20">Edit</button>
+
+</div>
+<div class="mt-8 border-t border-outline-variant pt-6">
+
+    <h3 class="font-bold text-red-600 mb-2">
+        Sign Out
+    </h3>
+
+    <p class="text-on-surface-variant mb-4">
+        Sign out from your account on this device.
+    </p>
+
+    <a href="{% url 'logout' %}"
+       class="inline-block px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700">
+        Sign Out
+    </a>
+
+</div>
+<!-- Security Item: Two-Step Verification -->
+
+</div>
+<!-- Warning/Info Section -->
+
+<!-- Account Closure Callout -->
+<div class="mt-gutter max-w-4xl border-t border-outline-variant pt-gutter">
+
+</div>
+</section>
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/login_security.js' %}"></script>
+{% endblock %}

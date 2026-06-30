@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/shipping.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Progress Stepper -->
+<nav class="mb-stack-lg flex items-center justify-center max-w-2xl mx-auto">
+<div class="flex items-center group">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+</div>
+<span class="ml-2 font-label-md text-label-md text-primary font-bold">Review</span>
+</div>
+<div class="stepper-line active"></div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center text-primary font-bold text-label-sm">
+          2
+        </div>
+<span class="ml-2 font-label-md text-label-md text-primary font-bold">Shipping</span>
+</div>
+<div class="stepper-line"></div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-on-surface-variant font-bold text-label-sm">
+          3
+        </div>
+<span class="ml-2 font-label-md text-label-md text-on-surface-variant">Payment</span>
+</div>
+</nav>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Shipping Form -->
+
+<section class="md:col-span-8 bg-surface-container-lowest p-stack-lg border border-outline-variant rounded-lg">
+<h1 class="font-headline-lg text-headline-lg mb-stack-lg text-on-surface">Shipping Information</h1>
+<form  method ="POST"
+class="space-y-stack-md" id="shipping-form">{% csrf_token %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="full_name">Full Name</label>
+<input class="w-full p-3 border border-outline-variant rounded-lg font-body-md focus:border-primary transition-all bg-surface" id="full_name" name="full_name" placeholder="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="email">Email Address</label>
+<input class="w-full p-3 border border-outline-variant rounded-lg font-body-md focus:border-primary transition-all bg-surface" id="email" name="email" placeholder="" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="address">Street Address</label>
+<input class="w-full p-3 border border-outline-variant rounded-lg font-body-md focus:border-primary transition-all bg-surface" id="address" name="street" placeholder="" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="city">City</label>
+<input class="w-full p-3 border border-outline-variant rounded-lg font-body-md focus:border-primary transition-all bg-surface" id="city" name="city" placeholder="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="state">State / Province</label>
+<input class="w-full p-3 border border-outline-variant rounded-lg font-body-md focus:border-primary transition-all bg-surface" id="state" name="state" placeholder="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="postal_code">Postal Code</label>
+<input class="w-full p-3 border border-outline-variant rounded-lg font-body-md focus:border-primary transition-all bg-surface" id="postal_code" name="postal_code" placeholder="" type="text"/>
+</div>
+</div>
+<div class="pt-stack-lg border-t border-outline-variant mt-stack-lg flex flex-col md:flex-row justify-between gap-stack-md">
+<a href="{% url 'review' %}">
+<button class="order-2 md:order-1 px-stack-lg py-3 border border-outline-variant rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+              Back to Review
+            </button></a>
+
+<a href="{% url 'payment' %}"
+   class="order-1 md:order-2 px-stack-lg py-3 bg-primary text-on-primary rounded-lg font-label-md font-bold hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<button type="submit">
+    Continue to Payment
+    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</a>
+  
+</div>
+</form>
+</section>
+
+<!-- Sidebar Order Summary -->
+<aside class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-low p-stack-lg border border-outline-variant rounded-lg sticky top-24">
+<h2 class="font-headline-md text-headline-md mb-stack-md text-on-surface">Order Summary</h2>
+<div class="space-y-4 mb-stack-md">
+<div class="flex gap-4 items-center">
+
+</div>
+<div class="space-y-2 pt-stack-md border-t border-outline-variant">
+  
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>₹{{total}}</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-primary font-bold">Calculated next</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Estimated Tax</span>
+<span>₹40.00</span>
+</div>
+<div class="flex justify-between pt-stack-sm font-label-md text-headline-md text-on-surface font-bold">
+<span>Total</span>
+<span>₹{{grand_total}}</span>
+</div>
+
+</div>
+
+
+
+</div>
+</div>
+</aside>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/shipping.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+.venv/
+
+# Database
+db.sqlite3
+db_backup.sqlite3
+
+# Environment variables
+.env
+
+# Django
+*.log
+media/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+*.swp
+
+# Docker
+*.pid

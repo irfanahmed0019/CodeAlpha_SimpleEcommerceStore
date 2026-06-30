@@ -1,0 +1,16 @@
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .address-card-hover {
+            transition: all 0.2s ease-in-out;
+        }
+        .address-card-hover:hover {
+            border-color: #004ac6;
+            transform: translateY(-2px);
+        }
+ 

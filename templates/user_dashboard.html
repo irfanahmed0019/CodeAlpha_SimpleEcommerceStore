@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/user_dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<!-- Left Sidebar: SideNavBar Component -->
+<!-- Right Content: Dashboard -->
+<section class="flex-1">
+<header class="mb-stack-lg">
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Your Account</h1>
+</header>
+<!-- Feature Cards Grid (Top Section) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Orders -->
+<a class="group bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl hover:shadow-lg transition-all duration-300 flex items-start gap-4" href="#">
+<div class="bg-surface-container-high p-3 rounded-lg text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="package">package</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Your Orders</h3>
+<p class="text-body-sm text-on-surface-variant mt-1">Track, return, or buy things again.</p>
+</div>
+</a>
+<!-- Security -->
+<a class="group bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl hover:shadow-lg transition-all duration-300 flex items-start gap-4" href="#">
+<div class="bg-surface-container-high p-3 rounded-lg text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="shield">shield</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Login &amp; Security</h3>
+<p class="text-body-sm text-on-surface-variant mt-1">Edit login, name, and mobile number.</p>
+</div>
+</a>
+
+<!-- Addresses -->
+<a class="group bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl hover:shadow-lg transition-all duration-300 flex items-start gap-4" href="#">
+<div class="bg-surface-container-high p-3 rounded-lg text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Your Addresses</h3>
+<p class="text-body-sm text-on-surface-variant mt-1">Edit addresses for orders and gifts.</p>
+</div>
+</a>
+<!-- Payments -->
+<a class="group bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl hover:shadow-lg transition-all duration-300 flex items-start gap-4" href="#">
+<div class="bg-surface-container-high p-3 rounded-lg text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="credit_card">credit_card</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Your Payments</h3>
+<p class="text-body-sm text-on-surface-variant mt-1">View all transactions and settings.</p>
+</div>
+</a>
+<!-- Profiles -->
+<a class="group bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl hover:shadow-lg transition-all duration-300 flex items-start gap-4" href="#">
+<div class="bg-surface-container-high p-3 rounded-lg text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface">Wishlist</h3>
+<p class="text-body-sm text-on-surface-variant mt-1">Manage, add, or remove user profiles
+</p>
+
+
+</div>
+</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<p><br><br><br><br><br><br><br><br><br><br><br></p>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/product.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/review.css' %}">
+{% endblock %}
+
+{% block content %}
+ 
+<div class="flex justify-center mb-stack-lg">
+<div class="flex items-center space-x-4 md:space-x-12">
+<div class="flex items-center gap-2 border-b-2 border-primary pb-2">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-[10px] font-bold">1</span>
+<span class="font-label-md text-primary uppercase tracking-wider">Review</span>
+</div>
+<div class="flex items-center gap-2 pb-2 text-on-surface-variant opacity-40">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-outline-variant text-on-surface-variant text-[10px] font-bold">2</span>
+<span class="font-label-md uppercase tracking-wider">Shipping</span>
+</div>
+<div class="flex items-center gap-2 pb-2 text-on-surface-variant opacity-40">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-outline-variant text-on-surface-variant text-[10px] font-bold">3</span>
+<span class="font-label-md uppercase tracking-wider">Payment</span>
+</div>
+</div>
+</div>   
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 space-y-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-stack-md">Review Your Order</h1>
+{% for item in cart_items %}
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-stack-md">
+<div class="flex flex-col md:flex-row gap-6">
+
+    
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-surface-container rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="{{item.product.name}}." src="{{item.product.image.url}}"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h2 class="font-headline-md text-headline-md text-on-surface">{{item.product.name}}</h2>
+<span class="font-body-lg text-on-surface font-semibold">₹{{item.product.discounted_price}}</span>
+</div>
+<p class="font-body-sm text-on-surface-variant mt-1">{{item.product.brand}}</p>
+{% if item.product.stock > 0 %}
+<p class="font-body-sm text-on-surface-variant mt-1">In Stock</p>
+{% else %}
+<p class="font-body-sm text-on-surface-variant mt-1">Out of Stock</p>
+{% endif %}
+</div>
+<span class="font-headline-md text-headline-md text-on-surface">₹{{item.total_price}}</span>
+</div>
+<div class="flex items-center gap-gutter mt-stack-md">
+<div class="flex items-center border border-outline-variant rounded-lg">
+    <a href="{% url 'decrease_quantity' item.id %}"
+ class="p-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</a>
+<span class="px-4 font-label-md text-label-md">{{item.quantity}}</span>
+<a href="{% url 'increase_quantity' item.id %}"
+ class="p-2 hover:bg-surface-variant transition-colors" >
+<span class="material-symbols-outlined text-[18px]">add</span>
+</a>
+</div>
+<div class="flex gap-stack-md">
+    <a href="{% url 'delete_cart_item' item.id %}"
+ class="font-body-sm text-body-sm text-primary hover:underline cursor-pointer">Delete</a>
+<span class="text-outline-variant">|</span>
+<button class="font-body-sm text-body-sm text-primary hover:underline cursor-pointer">Save for later</button>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+<div class="bg-surface-container-low p-stack-md rounded flex items-start gap-4 mt-stack-lg border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary">info</span>
+<div>
+<p class="font-body-sm text-on-surface font-semibold">Standard Shipping Policy</p>
+<p class="font-body-sm text-on-surface-variant">Your order qualifies for complimentary professional handling. Estimated delivery is 3-5 business days after processing.</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4">
+<div class="sticky top-stack-lg bg-surface-container-low border border-outline-variant rounded p-stack-lg shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Order Summary</h3>
+<div class="space-y-4 border-b border-outline-variant pb-stack-md mb-stack-md">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>₹{{total}}</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Shipping (Est.)</span>
+<span class="text-primary font-medium">Calculated next</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Tax</span>
+<span>₹40.00</span>
+</div>
+</div>
+
+<div class="flex justify-between font-headline-md text-headline-md text-on-surface mb-stack-lg">
+<span>Total</span>
+<span>₹{{grand_total}}</span>
+</div>
+<div class="space-y-4">
+    <a href="{% url 'shipping' %}">
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded font-label-md uppercase tracking-widest font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 group">
+                            Continue to Shipping
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/review.js' %}"></script>
+{% endblock %}  

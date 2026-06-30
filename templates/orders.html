@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/orders.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="flex-grow w-full max-w-container-max mx-auto flex flex-col md:flex-row">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col gap-base p-stack-md h-full w-64 flex-shrink-0 bg-surface-container-low border-r border-outline-variant">
+<div class="mb-stack-md">
+<h2 class="text-headline-md font-headline-md font-bold text-primary">Account Settings</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Manage your profile</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a href="{% url 'orders' %}" 
+class="flex items-center gap-3 px-3 py-2.5 text-primary font-bold bg-surface-container-high rounded-lg cursor-pointer transition-all duration-200" href="{% url 'orders' %}">
+<span class="material-symbols-outlined">package_2</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container rounded-lg cursor-pointer transition-all duration-200" href="{% url 'login_security' %}">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-label-md text-label-md">Security</span>
+</a>
+<a href="{% url 'addresses' %}"
+class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container rounded-lg cursor-pointer transition-all duration-200" href="{% url 'addresses' %}">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-md text-label-md">Addresses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-on-surface-variant hover:bg-surface-container rounded-lg cursor-pointer transition-all duration-200" href="{% url 'payment_account' %}">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="font-label-md text-label-md">Payments</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-grow flex flex-col gap-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Your Orders</h1>
+<!-- Filters & Search Bar -->
+
+
+
+<!-- Order Card 1 -->
+ {% for order in orders %}
+ 
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Order Header -->
+<div class="bg-surface-container-low px-stack-md py-3 flex flex-wrap justify-between items-center gap-4 text-body-sm border-b border-outline-variant">
+<div class="flex gap-stack-lg">
+<div>
+<p class="text-on-surface-variant uppercase text-[10px] font-bold tracking-wider">Order Placed</p>
+<p class="font-medium">{{order.created_at|date:"F d,Y"}}</p>
+</div>
+<div>
+<p class="text-on-surface-variant uppercase text-[10px] font-bold tracking-wider">Total</p>
+<p class="font-medium">₹{{ order.total }}</p>
+</div>
+<div>
+<p class="text-on-surface-variant uppercase text-[10px] font-bold tracking-wider">Ship To</p>
+<button class="text-primary hover:underline flex items-center gap-1 font-medium">{{ order.shipping_address.full_name }}<span class="material-symbols-outlined text-[16px]">expand_more</span></button>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-on-surface-variant uppercase text-[10px] font-bold tracking-wider">Order #{{ order.id }}</p>
+<div class="flex gap-4 mt-0.5">
+<a class="text-primary hover:underline font-medium" href="#">View order details</a>
+<span class="text-outline-variant">|</span>
+<a class="text-primary hover:underline font-medium" href="#">Invoice</a>
+</div>
+</div>
+</div>
+<!-- Order Body -->
+ {% for item in order.items.all %}
+<div class="p-stack-md flex flex-col md:flex-row gap-stack-md">
+<div class="flex gap-stack-md flex-grow">
+<div class="w-24 h-24 bg-surface-container-lowest rounded-lg border border-outline-variant overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-contain p-2" data-alt="A premium ProBook X1 Carbon laptop with a sleek silver aluminum body and thin black OLED screen bezels. Professional studio lighting with soft shadows on a minimalist white surface, emphasizing clean lines and high-end industrial design of the #Store brand." src="{{item.product.image.url}}"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-body-md text-primary font-semibold hover:underline cursor-pointer">{{item.product.name}}</h3>
+<p class="text-body-sm text-on-surface font-bold">Delivered Aug 30</p>
+<p class="text-label-sm text-on-surface-variant">Your package was left near the front door or porch.</p>
+<button class="mt-2 flex items-center gap-2 text-primary font-medium text-body-sm hover:underline">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                                    Buy it again
+                                </button>
+</div>
+</div>
+<div class="flex flex-col gap-2 w-full md:w-56 shrink-0">
+<button class="w-full py-2 bg-primary-container text-white rounded-full font-medium text-body-sm hover:opacity-90 transition-opacity">Track package</button>
+<button class="w-full py-2 bg-white border border-outline-variant text-on-surface rounded-full font-medium text-body-sm hover:bg-surface-container transition-colors">Return items</button>
+<button class="w-full py-2 bg-white border border-outline-variant text-on-surface rounded-full font-medium text-body-sm hover:bg-surface-container transition-colors">Write a product review</button>
+</div>
+</div>
+{% endfor %}
+</div>{% endfor %}
+
+
+</div>
+</section>
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/orders.js' %}"></script>
+{% endblock %}

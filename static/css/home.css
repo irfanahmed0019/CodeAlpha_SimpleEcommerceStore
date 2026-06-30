@@ -11,4 +11,24 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #faf8ff; }
         ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }
-  
+  .container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .products{
+    display: grid;
+    grid-template-columns: repeat(autofit, minimax(250px,1fr));
+    gap:24px;
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}

@@ -1,0 +1,51 @@
+{% extends 'auth_base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/new_user.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-[400px]">
+<!-- Identification Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-stack-lg form-card">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">
+                    It looks like you are new to #Store
+                </h1>
+<div class="flex items-center gap-base mb-stack-md">
+<span class="font-body-md text-body-md text-on-surface-variant">{{email}}</span>
+<button class="text-primary-container font-label-md text-label-md hover:underline cursor-pointer transition-all">Change</button>
+</div>
+<div class="mb-stack-lg">
+<p class="font-body-md text-body-md text-on-surface mb-stack-md">
+                        No account was found for this email.
+Let's create one to continue.
+                    </p>
+<a href="{% url 'signup' %}">
+<button class="w-full bg-primary-container text-on-primary py-stack-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-[0.98] shadow-sm">
+                        Proceed to create an account
+                    </button>
+</div></a>
+<!-- Divider -->
+<div class="relative flex items-center my-stack-lg">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-stack-sm text-outline font-label-sm text-label-sm">Already a customer?</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Secondary Action -->
+<div class="text-center">
+<a class="text-primary-container font-label-md text-label-md hover:underline transition-all" href="{% url 'login' %}">
+                        Sign in with a different account
+                    </a>
+</div>
+</div>
+<!-- Contextual Visual (Subtle reference to SCREEN_27/IMAGE_11 aesthetic) -->
+<div class="mt-stack-lg opacity-40 grayscale group hover:grayscale-0 transition-all duration-700 overflow-hidden rounded-xl border border-outline-variant">
+
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/new_user.js' %}"></script>
+{% endblock %}

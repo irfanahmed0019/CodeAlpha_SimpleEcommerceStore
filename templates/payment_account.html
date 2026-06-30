@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/payment_account.css' %}">
+{% endblock %}
+{% block content %}
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+
+<main class="flex-grow w-full max-w-container-max mx-auto flex flex-col md:flex-row">
+<!-- SideNavBar (Desktop) -->
+<aside class="h-full w-64 hidden md:block bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline p-base flex flex-col gap-stack-sm">
+<div class="mb-stack-lg px-base">
+<h2 class="text-headline-md font-headline-md text-primary">Account Settings</h2>
+<p class="text-label-sm text-on-surface-variant">Manage your preferences</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-stack-md p-stack-md text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-md text-label-md" href="{% url 'orders' %}">
+<span class="material-symbols-outlined">package_2</span>
+                    Your Orders
+                </a>
+<a class="flex items-center gap-stack-md p-stack-md text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">security</span>
+                    Login &amp; Security
+                </a>
+<a class="flex items-center gap-stack-md p-stack-md text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-md text-label-md" href="{% url 'addresses' %}">
+<span class="material-symbols-outlined">location_on</span>
+                    Your Addresses
+                </a>
+<a class="flex items-center gap-stack-md p-stack-md text-primary font-bold bg-primary-container/10 transition-all rounded-lg font-label-md text-label-md translate-x-1" href="{% url 'payment_account' %}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                    Your Payments
+                </a>
+
+</nav>
+</aside>
+<!-- Content Area -->
+<section class="flex-grow p-margin-mobile md:p-margin-desktop">
+<div class="max-w-3xl mx-auto">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Your Payments</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage your saved payment methods and security preferences.</p>
+</div>
+<!-- Bento Grid for Payment Methods -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-stack-lg">
+<!-- Visa Card -->
+<div class="group relative bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl transition-all hover:shadow-[0px_4px_20px_rgba(0,0,0,0.05)] flex flex-col justify-between h-48">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Primary Method</span>
+<span class="text-body-lg font-bold">Visa ending in 4242</span>
+</div>
+<img alt="Visa" class="h-4 opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTIsTpFrK6iQZxKpYlccz0U7Ncg9KN4b59i9MAkyAjo3rgK0wjI3pxgdFN0-vHFm0QpLTkOJOfgaUSIe9_UZEouw6UMRbFsjn606Wqv5wfq0o36kwC5uf-BOOKTksrGaeyrthWsuikJ9b9xk7vkL1aCWEPWVkK3JXV_UNIoTSuXHudnVH1plQ38sgwleMrUUXSh34WRDDXo_BcNqfV1kFOxd4jxYOxHMxdNL_XZmE3aedczp0WHj0txkpyugZe2cUNghDhi_9osLA">
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-label-sm text-outline">Expires</p>
+<p class="text-body-md font-medium">12/26</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="text-label-sm font-label-md text-primary hover:underline">Edit</button>
+<button class="text-label-sm font-label-md text-error hover:underline">Remove</button>
+</div>
+</div>
+</div>
+<!-- Mastercard Card -->
+<div class="group relative bg-surface-container-lowest border border-outline-variant p-stack-md rounded-xl transition-all hover:shadow-[0px_4px_20px_rgba(0,0,0,0.05)] flex flex-col justify-between h-48">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Backup</span>
+<span class="text-body-lg font-bold">Mastercard ending in 8891</span>
+</div>
+<img alt="Mastercard" class="h-8 opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1F4KckXKsCtD27F0p-v_-Du1M9fSUCIJ5VrooLB0M_usIN8Iy3ncwokFkjXJhgz599hCZBhWdQ5Hv-w4DrzeJJ0jCWrsa491hntM81KbmzB2fhdi3r0J9WRZX_fqjehPXgqyp27RMqw9kKeOnkYem23z2gccm5NTr4bLFRtALnF_wSW3qK-i1o8nd2hA3TqmQiXTCVFAMK_nxZ6w1GnUnFgoHsdPyv8NAhMD8EJsj1zWdLAxxHzoIiRu26bKFIlSMgNr096AAfMg">
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-label-sm text-outline">Expires</p>
+<p class="text-body-md font-medium">05/25</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="text-label-sm font-label-md text-primary hover:underline">Edit</button>
+<button class="text-label-sm font-label-md text-error hover:underline">Remove</button>
+</div>
+</div>
+</div>
+<!-- Apple Pay (Asymmetric Layout Example) -->
+<div class="md:col-span-2 group relative bg-surface-container-low border border-dashed border-outline-variant p-stack-md rounded-xl transition-all hover:bg-surface-container flex items-center justify-between" style="transform: translateY(-2px);">
+<div class="flex items-center gap-gutter">
+<div class="bg-on-surface text-surface p-stack-sm rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">contactless_off</span>
+</div>
+<div>
+<h3 class="text-body-md font-bold">Apple Pay</h3>
+<p class="text-label-sm text-on-surface-variant">Linked to your Apple ID</p>
+</div>
+</div>
+<button class="px-gutter py-2 border border-outline-variant text-label-md font-label-md rounded-lg hover:bg-white transition-all">Disconnect</button>
+</div>
+</div>
+<!-- Add New Method -->
+<div class="bg-surface p-gutter rounded-xl border border-outline-variant">
+<h2 class="text-headline-md font-headline-md mb-stack-md">Add a payment method</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<button class="flex flex-col items-center justify-center gap-stack-sm p-stack-lg border border-outline-variant rounded-xl hover:border-primary hover:bg-primary-container/5 transition-all group">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary">credit_card</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">Credit or Debit Card</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-stack-sm p-stack-lg border border-outline-variant rounded-xl hover:border-primary hover:bg-primary-container/5 transition-all group">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary">account_balance</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">Personal Bank Account</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-stack-sm p-stack-lg border border-outline-variant rounded-xl hover:border-primary hover:bg-primary-container/5 transition-all group">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:text-primary">qr_code_2</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">Digital Wallets</span>
+</button>
+</div>
+</div>
+<!-- Security Message -->
+<div class="mt-stack-lg flex gap-stack-md p-stack-md bg-secondary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<p class="text-body-sm font-body-sm text-on-secondary-container">
+                        Your payment information is encrypted and stored securely. #Store never shares your full credit card details with sellers.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="{% js/payment_account 5}"></script>
+{% endblock %}

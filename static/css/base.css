@@ -9,6 +9,7 @@ body {
                              'opsz' 24;
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-}
+ /* Minimalist scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #faf8ff; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 10px; }

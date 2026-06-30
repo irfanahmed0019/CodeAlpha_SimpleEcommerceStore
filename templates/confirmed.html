@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/confirmed.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="min-h-screen pt-32 pb-stack-lg flex flex-col items-center justify-center px-margin-mobile">
+<div class="max-w-[640px] w-full text-center success-animation">
+<!-- Success Icon -->
+<div class="mb-stack-md inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container text-white">
+<span class="material-symbols-outlined !text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Heading -->
+<h1 class="font-display text-display text-on-surface mb-stack-sm md:text-display lg:text-display">Order Confirmed</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">
+                Thank you for your purchase. Your product will be shipped shortly.
+            </p>
+<!-- Status Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md md:p-stack-lg mb-stack-lg text-left">
+
+    <!-- Order Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md border-b border-outline-variant pb-stack-md mb-stack-md">
+
+        <div>
+            <p class="font-label-sm uppercase">Order Number</p>
+            <p class="font-body-md font-bold">#{{ order.id }}</p>
+        </div>
+
+        <div>
+            <p class="font-label-sm uppercase">Payment Method</p>
+            <p class="font-body-md font-bold">
+                {{ order.payment.get_payment_method_display }}
+            </p>
+        </div>
+
+        <div>
+            <p class="font-label-sm uppercase">Estimated Delivery</p>
+            <p class="font-body-md font-bold">
+                Oct 24 - Oct 26
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Products -->
+    {% for item in items %}
+
+    <div class="flex items-center gap-stack-md py-4 border-b border-outline-variant">
+
+        <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+            <img
+                src="{{ item.product.image.url }}"
+                class="w-full h-full object-cover">
+        </div>
+
+        <div class="flex-grow">
+            <p class="font-semibold">
+                {{ item.product.name }}
+            </p>
+
+            <p class="text-on-surface-variant">
+                Qty: {{ item.quantity }}
+            </p>
+        </div>
+
+        <div class="text-right font-bold">
+            ₹{{ item.price }}
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+<!-- Trust Signal -->
+<div class="flex items-center justify-center gap-2 mb-stack-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<p class="font-body-sm text-body-sm">A confirmation email has been sent to your inbox.</p>
+</div>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row gap-stack-md justify-center">
+    <a href="{% url 'orders' %}">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-10 py-4 rounded-full hover:opacity-90 transition-all active:scale-95 duration-100 flex items-center justify-center gap-2">
+                    View My Orders
+        <span class="material-symbols-outlined">receipt_long</span>
+</button></a>
+<a href="{% url 'home' %}">
+<button class="bg-transparent border border-outline text-on-surface font-label-md text-label-md px-10 py-4 rounded-full hover:bg-surface-container transition-all active:scale-95 duration-100">
+                    Continue Shopping
+                </button>
+</a>
+</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/confirmed.js' %}"></script>
+{% endblock %}  
