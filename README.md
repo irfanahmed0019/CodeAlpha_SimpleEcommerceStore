@@ -6,19 +6,11 @@ Developed as **Task 1** of the **CodeAlpha Full Stack Development Internship (Ju
 
 ---
 
-## 🚀 Live Demo
-
-> 🔗 Add your deployment link here
-
-```
-https://your-demo-link.vercel.app
-```
 
 ---
 
-# 📸 Preview
+#  Preview
 
-Add screenshots of:
 
 - 🏠 Home Page
 - 📦 Product Details
@@ -28,7 +20,6 @@ Add screenshots of:
 - 🔐 Login / Register
 - 🌐 Google Sign-In
 
----
 
 # ✨ Features
 
