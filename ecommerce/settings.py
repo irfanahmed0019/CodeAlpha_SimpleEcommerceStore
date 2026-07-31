@@ -12,7 +12,12 @@ import os
 DEBUG = os.getenv("VERCEL") is None
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "codealphasimpleecommercestore-production.up.railway.app",
+    "127.0.0.1",
+    "localhost",
+]
+
 CSRF_TRUSTED_ORIGINS = [
     "https://codealphasimpleecommercestore-production.up.railway.app",
     "http://127.0.0.1:8000",
