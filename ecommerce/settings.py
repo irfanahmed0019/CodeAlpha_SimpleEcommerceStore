@@ -8,7 +8,7 @@ import os
 DEBUG = os.getenv("VERCEL") is None
 DEBUG = True
 
-ALLOWED_HOSTS = [""]
+ALLOWED_HOSTS = ["*"]
 
 # -------------------------
 # Applications
