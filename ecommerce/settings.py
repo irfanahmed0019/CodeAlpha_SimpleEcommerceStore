@@ -13,6 +13,11 @@ DEBUG = os.getenv("VERCEL") is None
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://codealphasimpleecommercestore-production.up.railway.app",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
 
 # -------------------------
 # Applications
@@ -106,9 +111,11 @@ DATABASES = {
 
 # -------------------------
 # Password Validators
+
 # -------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
+
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
