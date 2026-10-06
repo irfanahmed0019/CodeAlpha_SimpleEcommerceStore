@@ -9,16 +9,13 @@ Developed as **Task 1** of the **CodeAlpha Full Stack Development Internship (Ju
 
 ---
 
-#  Preview
+## Screenshots
 
+<p align="center">
+  <img src="docs/screenshots/codealpha-desktop.png" alt="CodeAlpha store on desktop" width="64%">
+  <img src="docs/screenshots/codealpha-mobile.png" alt="CodeAlpha store on mobile" width="22%">
+</p>
 
-- 🏠 Home Page
-- 📦 Product Details
-- 🛍️ Shopping Cart
-- 🚚 Checkout
-- 📜 Orders
-- 🔐 Login / Register
-- 🌐 Google Sign-In
 
 
 # ✨ Features
